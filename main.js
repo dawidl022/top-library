@@ -1,7 +1,4 @@
-const myLibrary = [];
-const form = document.querySelector('#form');
-const tableBody = document.querySelector('#table tbody');
-const showFormButton = document.querySelector("#show-form-btn");
+let myLibrary;
 
 function Book(title, author, pageCount, read) {
   this.title = title;
@@ -20,6 +17,22 @@ Book.prototype.toTableCells = function() {
 Book.prototype.toggleRead = function() {
   this.read = !this.read;
 }
+
+if (localStorage.getItem('library') === null) {
+  // demo book
+  myBook = new Book("How to Win Friends and Influence People", "Dale Carnegie", 268, false);
+  myLibrary = [myBook]
+} else {
+  myLibrary = JSON.parse(localStorage.getItem('library'));
+  // after deserialization the prototype needs to be set up manually
+  myLibrary.forEach(book => {
+    Object.setPrototypeOf(book, Book.prototype);
+  })
+}
+
+const form = document.querySelector('#form');
+const tableBody = document.querySelector('#table tbody');
+const showFormButton = document.querySelector("#show-form-btn");
 
 function addBookToLibrary(e) {
   e.preventDefault();
@@ -74,14 +87,13 @@ function displayBooks(library) {
 
     tableBody.appendChild(row);
   });
+
+  localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
-form.addEventListener('submit', addBookToLibrary);
-
-// demo book
-myBook = new Book("How to Win Friends and Influence People", "Dale Carnegie", 268, false);
-myLibrary.push(myBook);
 displayBooks(myLibrary);
+
+form.addEventListener('submit', addBookToLibrary);
 
 
 showFormButton.addEventListener('click', () => {
