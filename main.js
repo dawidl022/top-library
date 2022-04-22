@@ -36,10 +36,13 @@ const showFormButton = document.querySelector("#show-form-btn");
 
 function addBookToLibrary(e) {
   e.preventDefault();
+
   myLibrary.push(new Book(
     form.title.value, form.author.value, form['page-count'].value,
     form.read.checked ? true : false
   ));
+
+  form.reset();
   displayBooks(myLibrary);
 }
 
