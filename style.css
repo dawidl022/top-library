@@ -1,0 +1,38 @@
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+form {
+  margin: 2rem auto;
+  max-width: 30rem;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+button {
+  min-width: 10rem;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.table td, .table th {
+  vertical-align: inherit;
+  text-align: center;
+}
+
+.center {
+  margin: 0 auto;
+  display: block;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}
