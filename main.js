@@ -21,7 +21,7 @@ Book.prototype.toggleRead = function() {
 if (localStorage.getItem('library') === null) {
   // demo book
   myBook = new Book("How to Win Friends and Influence People", "Dale Carnegie", 268, false);
-  myLibrary = [myBook]
+  myLibrary = [myBook];
 } else {
   myLibrary = JSON.parse(localStorage.getItem('library'));
   // after deserialization the prototype needs to be set up manually
@@ -56,7 +56,7 @@ function displayBooks(library) {
     readButton.textContent = book.read ? "Mark as not read" : "Mark as read";
     readButton.className = 'btn btn-secondary';
 
-    readCell.appendChild(readButton)
+    readCell.appendChild(readButton);
     row.appendChild(readCell);
   }
 
@@ -72,7 +72,7 @@ function displayBooks(library) {
     deleteButton.textContent = "Delete";
     deleteButton.className = 'btn btn-danger';
 
-    deleteCell.appendChild(deleteButton)
+    deleteCell.appendChild(deleteButton);
     row.appendChild(deleteCell);
   }
 
